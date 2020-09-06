@@ -30,9 +30,10 @@ public class UserController {
      * Recurso que realiza login en el sistema
      * @param user Objeto User
      * @return Objeto User
+     * @throws java.lang.Exception
      */
     @PostMapping("/login")
-    public User login(@RequestBody User user) {
+    public User login(@RequestBody User user) throws Exception {
         return this.userService.login(user);
     }
 }

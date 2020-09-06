@@ -23,6 +23,7 @@ public interface UserService {
      * Login usuario
      * @param user Objeto User
      * @return User
+     * @throws java.lang.Exception
      */
-    User login(User user);
+    User login(User user) throws Exception;
 }

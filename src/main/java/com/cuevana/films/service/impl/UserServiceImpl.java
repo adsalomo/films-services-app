@@ -27,8 +27,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(User user) {
+    public User login(User user) throws Exception {
         User existsUser = this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (existsUser == null) {
+            throw new Exception("Usuario y/o contraseña incorrecto!!!");
+        }
         return existsUser;
     }
     
