@@ -21,21 +21,21 @@ public class Gender implements Serializable {
 
     @Id
     @Column(name = "gender_id")
-    private int genderId;
+    private int id;
     private String name;
 
     /**
-     * @return the genderId
+     * @return the id
      */
-    public int getGenderId() {
-        return genderId;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param genderId the genderId to set
+     * @param id the id to set
      */
-    public void setGenderId(int genderId) {
-        this.genderId = genderId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -51,5 +51,7 @@ public class Gender implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+   
 
 }

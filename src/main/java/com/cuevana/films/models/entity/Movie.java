@@ -29,7 +29,7 @@ public class Movie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_id")
-    private int userId;
+    private int id;
     private String name;
     private String description;
     private String image;
@@ -44,17 +44,17 @@ public class Movie implements Serializable {
     private int rating;
 
     /**
-     * @return the userId
+     * @return the movieId
      */
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param userId the userId to set
+     * @param id the userId to set
      */
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

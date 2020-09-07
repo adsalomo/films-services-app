@@ -10,6 +10,7 @@ import com.cuevana.films.models.entity.Movie;
 import com.cuevana.films.models.repository.GenderRepository;
 import com.cuevana.films.models.repository.MovieRepository;
 import com.cuevana.films.service.iface.MovieService;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,8 +40,9 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void create(Movie movie) {
-        Optional<Gender> existsGender = this.genderRepository.findById(movie.getGenderId().getGenderId());
+        Optional<Gender> existsGender = this.genderRepository.findById(movie.getGenderId().getId());
         if (existsGender.isPresent()) {
+            movie.setCreatedAt(LocalDateTime.now());
             movie.setGenderId(existsGender.get());
             this.movieRepository.save(movie);
         }
@@ -56,7 +58,7 @@ public class MovieServiceImpl implements MovieService {
             existsMovie.get().setImage(movie.getImage());
             existsMovie.get().setRating(movie.getRating());
             existsMovie.get().setReleaseDate(movie.getReleaseDate());
-            Optional<Gender> existsGender = this.genderRepository.findById(movie.getGenderId().getGenderId());
+            Optional<Gender> existsGender = this.genderRepository.findById(movie.getGenderId().getId());
             if (existsGender.isPresent()) {
                 existsMovie.get().setGenderId(existsGender.get());
             }
@@ -69,6 +71,15 @@ public class MovieServiceImpl implements MovieService {
         Optional<Movie> existsMovie = this.movieRepository.findById(movieId);
         if (existsMovie.isPresent()) {
             this.movieRepository.delete(existsMovie.get());
+        }
+    }
+
+    @Override
+    public void rate(Movie movie, int movieId) {
+        Optional<Movie> existsMovie = this.movieRepository.findById(movieId);
+        if (existsMovie.isPresent()) {
+            existsMovie.get().setRating(existsMovie.get().getRating() + movie.getRating());
+            this.movieRepository.save(existsMovie.get());
         }
     }
 

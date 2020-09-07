@@ -5,6 +5,7 @@ import com.cuevana.films.service.iface.MovieService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/movie")
+@CrossOrigin("*")
 public class MovieController {
     
     @Autowired
@@ -67,8 +69,21 @@ public class MovieController {
      */
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void edit(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         this.movieService.delete(id);
+    }
+    
+    /**
+     * Recurso para calificar peliculas
+     * Implementa el metodo HTTP PUT
+     * A diferencia del POST, PUT recibe como parametro el id del recurso a modificar 
+     * @param movie
+     * @param id 
+     */
+    @PutMapping("/rate/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void rate(@RequestBody Movie movie, @PathVariable int id) {
+        this.movieService.rate(movie, id);
     }
     
 }

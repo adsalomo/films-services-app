@@ -39,4 +39,11 @@ public interface MovieService {
      * @param movieId int movieId
      */
     void delete(int movieId);
+    
+    /**
+     * Califica una pelicula
+     * @param movie Objeto Movie
+     * @param movieId int movieId
+     */
+    void rate(Movie movie, int movieId);
 }

@@ -13,7 +13,7 @@ create table gender (
 create table movie (
 	movie_id int not null auto_increment,
 	name varchar(500) not null,
-	description varchar(500),
+	description longtext,
 	image varchar(500) not null,
 	created_at datetime not null,
 	release_date date,
@@ -53,5 +53,8 @@ insert into profile(profile_id, name) values (2, 'Cliente');
 -- User
 insert into `user` (user_id, name, email, created_at, password, profile_id) 
 values (1, 'Adrián López', 'adrian.lopez@pascualbravo.edu.co', now(), '123456', 1);
+
+insert into `user` (user_id, name, email, created_at, password, profile_id) 
+values (2, 'Elena Guzman', 'elena.guzman@pascualbravo.edu.co', now(), '123456', 2);
 
 

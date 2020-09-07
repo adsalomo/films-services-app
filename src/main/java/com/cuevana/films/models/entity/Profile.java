@@ -21,21 +21,21 @@ public class Profile implements Serializable {
 
     @Id
     @Column(name = "profile_id")
-    private int profileId;
+    private int id;
     private String name;
 
     /**
-     * @return the profileId
+     * @return the id
      */
-    public int getProfileId() {
-        return profileId;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param profileId the profileId to set
+     * @param id the id to set
      */
-    public void setProfileId(int profileId) {
-        this.profileId = profileId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -51,5 +51,7 @@ public class Profile implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    
 
 }
