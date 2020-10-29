@@ -42,6 +42,24 @@ public class Movie implements Serializable {
     @JoinColumn(name = "gender_id")
     private Gender genderId;
     private int rating;
+    
+    public Movie() {
+        
+    }
+
+    public Movie(int id, String name, String description, String image, 
+            LocalDateTime createdAt, LocalDate releaseDate, String actors, 
+            Gender genderId, int rating) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.createdAt = createdAt;
+        this.releaseDate = releaseDate;
+        this.actors = actors;
+        this.genderId = genderId;
+        this.rating = rating;
+    }
 
     /**
      * @return the movieId
